@@ -8,6 +8,21 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+div {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -30,4 +45,50 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+    @apply font-bold;
+  }
+  h2 {
+    @apply text-xl;
+    @apply font-bold;
+  }
+  h3 {
+    @apply text-lg;
+    @apply font-bold;
+  }
+  h4 {
+    @apply text-base;
+    @apply font-bold;
+  }
+  h5 {
+    @apply text-sm;
+    @apply font-bold;
+  }
+  h6 {
+    @apply text-xs;
+    @apply font-bold;
+  }
+  button {
+    @apply bg-white cursor-pointer border-gray-200  rounded border shadow-none;
+  }
+}
+
+.rdw-editor-main blockquote {
+  border-left: 5px solid #f1f1f1;
+  padding-left: 5px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+.rdw-editor-main pre {
+  background: #f1f1f1;
+  border-radius: 3px;
+  padding: 1px 10px;
 }
