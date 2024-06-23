@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
   });
 }
 
-const sleep = async (e) => {
+const sleep = async (e: number) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(1);
