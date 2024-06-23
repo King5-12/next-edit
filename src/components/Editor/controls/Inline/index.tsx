@@ -1,29 +1,20 @@
 'use client';
 
-import { EditorState, Modifier, RichUtils } from 'draft-js';
+import { EditorState, RichUtils } from 'draft-js';
 import Image from 'next/image';
 import classnames from 'classnames';
 import { useEffect, useState } from 'react';
 
-import { InlineType } from '../../defaulToolbar';
 import { getSelectionInlineStyle } from '../../utils';
+import { ControlComProps } from '..';
+import { ControlType, InlineType } from '../../defaulToolbar';
 
 //内联样式控制
 export default function Inline({
   onChange,
   editorState,
   config,
-}: {
-  onChange: (editorState: EditorState) => void;
-  editorState: EditorState;
-  config: { options: InlineType[] } & {
-    [key in InlineType]: {
-      icon: string;
-      title: string;
-      description: string;
-    };
-  };
-}) {
+}: ControlComProps<ControlType.inline>) {
   const changeKeys = (style: { [key: string]: boolean }) => {
     if (style) {
       const st: { [key: string]: boolean } = {};

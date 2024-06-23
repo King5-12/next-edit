@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+// 首页渲染在服务端。
 export default function Home() {
   return (
     <div className='flex justify-center min-h-screen flex-col items-center p-24'>

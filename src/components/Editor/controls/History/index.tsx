@@ -3,14 +3,14 @@ import Image from 'next/image';
 import { EditorState } from 'draft-js';
 
 import { ControlComProps } from '..';
-import { HistoryType } from '../../defaulToolbar';
 import { useMemo } from 'react';
+import { ControlType, HistoryType } from '../../defaulToolbar';
 
 export default function History({
   onChange,
   editorState,
   config,
-}: { options: HistoryType[] } & ControlComProps) {
+}: ControlComProps<ControlType.history>) {
   const toggleHistory = (action: HistoryType) => {
     const newState = EditorState[action](editorState);
     newState && onChange(newState);
@@ -25,7 +25,7 @@ export default function History({
   }, [editorState]);
   return (
     <div className='flex'>
-      {(config.options as HistoryType[]).map((item, index) => {
+      {(config.options as HistoryType[]).map((item: HistoryType, index) => {
         return (
           <button
             className={classnames(

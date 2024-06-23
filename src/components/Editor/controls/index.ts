@@ -3,13 +3,13 @@ import blockType from './BlockType';
 import list from './List';
 import history from './History';
 
-import { ControlType } from '../defaulToolbar';
+import { ControlType, DefaultToolbarType } from '../defaulToolbar';
 import { EditorState } from 'draft-js';
 
-export type ControlComProps = {
+export type ControlComProps<T extends ControlType> = {
   onChange: (editorState: EditorState) => void;
   editorState: EditorState;
-  config: { options?: string[] } & { [key: string]: any };
+  config: DefaultToolbarType[T];
 };
 
 const Controls = {

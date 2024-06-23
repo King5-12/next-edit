@@ -1,9 +1,9 @@
 import { EditorState, RichUtils } from 'draft-js';
-import { BlockType } from '../../defaulToolbar';
 import classnames from 'classnames';
 import { useEffect, useState } from 'react';
 import { getSelectedBlocksType } from '../../utils';
 import { ControlComProps } from '..';
+import { BlockType, ControlType } from '../../defaulToolbar';
 
 const blocksTypes = [
   { label: BlockType['Normal'], style: 'unstyled' },
@@ -21,9 +21,7 @@ const blocksTypes = [
 export default function BlockTypeCom({
   onChange,
   editorState,
-}: ControlComProps & {
-  config: { options: BlockType[]; title: string };
-}) {
+}: ControlComProps<ControlType.blockType>) {
   const [currentBlockType, setCurrentBlockType] = useState(() =>
     editorState ? getSelectedBlocksType(editorState) : 'unstyled'
   );

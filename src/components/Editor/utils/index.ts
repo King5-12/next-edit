@@ -1,3 +1,4 @@
+// 从draftjs-utils中导入的功能函数
 import { BlockMap, ContentBlock, ContentState, EditorState } from 'draft-js';
 
 export function getSelectionInlineStyle(editorState: EditorState) {
@@ -69,6 +70,7 @@ export function getSelectionInlineStyle(editorState: EditorState) {
 export function getSelectedBlocksList(editorState: EditorState) {
   return getSelectedBlocksMap(editorState).toList();
 }
+
 /**
  * Function returns collection of currently selected blocks.
  */

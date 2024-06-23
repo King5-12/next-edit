@@ -3,19 +3,18 @@ import { RichUtils } from 'draft-js';
 import Image from 'next/image';
 
 import { ControlComProps } from '..';
-import { ListType } from '../../defaulToolbar';
 import {
-  changeDepth,
   getBlockBeforeSelectedBlock,
   getSelectedBlock,
   isListBlock,
 } from '../../utils';
 import { useEffect, useMemo, useState } from 'react';
+import { ControlType, ListType } from '../../defaulToolbar';
 export default function List({
   onChange,
   editorState,
   config,
-}: { options: ListType[] } & ControlComProps) {
+}: ControlComProps<ControlType.list>) {
   const [currentBlock, setCurrentBlock] = useState(() =>
     editorState ? getSelectedBlock(editorState) : undefined
   );
@@ -25,19 +24,10 @@ export default function List({
     } else if (item === ListType.ordered) {
       toggleBlockType('ordered-list-item');
     }
-    // else if (item === ListType.indent) {
-    //   adjustDepth(1);
-    // } else {
-    //   adjustDepth(-1);
-    // }
   };
 
   const toggleBlockType = (blockType: string) => {
     const newState = RichUtils.toggleBlockType(editorState, blockType);
-    newState && onChange(newState);
-  };
-  const adjustDepth = (blockType: number) => {
-    const newState = changeDepth(editorState, blockType, 4);
     newState && onChange(newState);
   };
 
