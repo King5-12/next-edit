@@ -50,7 +50,7 @@ export default memo(function Assistant({
             </div>
           ) : (
             <div className='bg-white shadow-md w-full h-100 flex justify-center items-center rounded-lg text-xl'>
-              请在左侧添加文本
+              暂无提示
             </div>
           )}
         </>

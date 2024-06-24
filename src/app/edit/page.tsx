@@ -30,7 +30,7 @@ export default function EditPage() {
               if (
                 e.blocks.length > 0 &&
                 e.blocks.some((item) => {
-                  item.text.trim().length > 0;
+                  return item.text.trim().length > 0;
                 })
               ) {
                 setContentState(e);
