@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import React, { useRef, useState, useImperativeHandle } from 'react';
 import {
   Editor,
   EditorState,
@@ -22,7 +22,7 @@ import Controls from './controls';
 type EditComponentProp = {
   onChange: (e: RawDraftContentState) => void;
 };
-export default function EditComponent({ onChange }: EditComponentProp) {
+const EditComponent = ({ onChange }: EditComponentProp, ref: any) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -51,6 +51,15 @@ export default function EditComponent({ onChange }: EditComponentProp) {
   const getStyleMap = () => ({
     ...getCustomStyleMap(),
   });
+
+  useImperativeHandle(ref, () => ({
+    getNewEditorState() {
+      return editorState;
+    },
+    setEditorState(e: EditorState) {
+      setEditorState(e);
+    },
+  }));
   return (
     <div className='bg-white shadow-md  h-full p-12 rounded-lg flex flex-col'>
       <div
@@ -85,4 +94,6 @@ export default function EditComponent({ onChange }: EditComponentProp) {
       </div>
     </div>
   );
-}
+};
+
+export default React.forwardRef(EditComponent);

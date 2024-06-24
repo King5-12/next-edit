@@ -5,7 +5,7 @@ import Editor from '@/components/Editor/index';
 import useRequest from '@/hooks/useRequest';
 import { getActions } from '@/setvices';
 import { RawDraftContentState } from 'draft-js';
-import { use, useState } from 'react';
+import { useState } from 'react';
 
 // 编辑器页面，仅在浏览器端渲染
 export default function EditPage() {
@@ -27,7 +27,12 @@ export default function EditPage() {
         <div className='w-3/5 mr-20'>
           <Editor
             onChange={(e) => {
-              if (e.blocks.length > 0) {
+              if (
+                e.blocks.length > 0 &&
+                e.blocks.some((item) => {
+                  item.text.trim().length > 0;
+                })
+              ) {
                 setContentState(e);
                 runGetAction(e);
               }

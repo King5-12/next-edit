@@ -1,9 +1,10 @@
 import { memo } from 'react';
 import { RawDraftContentState } from 'draft-js';
-
-import AssistantItem from './AssistantItem';
 import { Spin } from 'antd';
 
+import AssistantItem from './AssistantItem';
+
+//功能区组件
 export default memo(function Assistant({
   loading,
   tipList,
@@ -36,8 +37,9 @@ export default memo(function Assistant({
                   return (
                     <div
                       key={item.key}
-                      className='border my-10 bg-white shadow-md w-full min-h-100 rounded-lg'
+                      className='border my-10 bg-white shadow-md w-full rounded-lg relative hover:bg-gray-100'
                     >
+                      <div className='h-10 w-5 bg-red-600 rounded-r-full rounded-l-none border absolute top-15'></div>
                       <AssistantItem
                         tip={item}
                         contentState={contentState as RawDraftContentState}

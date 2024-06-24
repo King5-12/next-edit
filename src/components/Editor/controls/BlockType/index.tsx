@@ -1,4 +1,4 @@
-import { EditorState, RichUtils } from 'draft-js';
+import { RichUtils } from 'draft-js';
 import classnames from 'classnames';
 import { useEffect, useState } from 'react';
 import { getSelectedBlocksType } from '../../utils';
